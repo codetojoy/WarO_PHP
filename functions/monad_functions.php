@@ -8,11 +8,11 @@ require_once './functions/game_functions.php';
 use Widmogrod\Functional as f;
 use Widmogrod\Monad\State as s;
 
-// ------- playRound
-
 // TODO: we don't need `dummy` but there is
-// something going on my understanding of the currying mechanism,
+// something going on re: my understanding of the currying mechanism,
 // so I'm having trouble removing it. Ugh.
+
+// ------- playRound
 
 function updateState($prizeCard, $gameState) {
     $newGameState = playRoundGameState($prizeCard, $gameState);
@@ -32,20 +32,11 @@ function playRound($prizeCard, $dummy = []) {
 
 // ------- logGameState
 
-// TODO: we don't need `prizeCard` or `dummy` but there is
-// something going on my understanding of the currying mechanism,
-// so I'm having trouble removing it. Ugh.
-
-function logState($prizeCard, $gameState) {
-    // TODO: this should really be using an IO monad
-    $gameState->logState();
-
-    return [$prizeCard, $gameState];
-}
-
 function buildLog($prizeCard, $dummy) {
     return s\state(function($gameState) use ($prizeCard) { 
-        return logState($prizeCard, $gameState);
+        // TODO: this should really be using an IO monad
+        $gameState->logState();
+        return [$prizeCard, $gameState];
     }); 
 } 
 
@@ -54,10 +45,6 @@ function logGameState($prizeCard, $dummy = []) {
 } 
 
 // ------- seed
-
-// TODO: we don't need `dummy` but there is
-// something going on my understanding of the currying mechanism,
-// so I'm having trouble removing it. Ugh.
 
 function seedGameState($prizeCard, $dummy = []) { 
     return s\state(function($gameState) use ($prizeCard) {
