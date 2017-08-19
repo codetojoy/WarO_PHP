@@ -1,7 +1,7 @@
 
 <?php 
 
-require_once 'game_functions.php';
+require_once './functions/game_functions.php';
 
 class GameState {
     private $players;
@@ -15,8 +15,6 @@ class GameState {
             $p->logState();
         };
     }
-
-    public function getPlayers() { return $this->players; }
 
     public function playRound($prizeCard) {
         $newPlayers = playRoundForPlayers($prizeCard, $this->players);

@@ -8,7 +8,7 @@ require_once './objects/Hand.php';
 require_once './objects/Player.php';
 require_once './objects/GameState.php';
 
-require_once 'monad_functions.php';
+require_once './functions/monad_functions.php';
 
 use Widmogrod\Monad\State as s;
 
