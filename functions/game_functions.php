@@ -20,10 +20,8 @@ function getBidsForRound($players) {
     $newPlayers = array();
 
     $bids = array_map(function ($p) use(&$newPlayers) { 
-        $name = $p->getName();
-        list($card, $newPlayer) = $p->getBid();
-        $bid = new Bid($card, $newPlayer);
-        $newPlayers[$name] = $newPlayer;
+        $bid = new Bid(... $p->getBid()); 
+        $newPlayers[$p->getName()] = $bid->getPlayer();
         return $bid;
     }, $players);        
 
