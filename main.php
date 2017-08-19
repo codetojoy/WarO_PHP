@@ -28,8 +28,6 @@ $config[$p2->getName()] = $p2;
 
 // build the State monad as a chain of functions
 
-// ********* NEW
-
 $seedCard = array_shift($kitty);
 $state = playRound($seedCard, [])->bind(logGameState($seedCard));
 
