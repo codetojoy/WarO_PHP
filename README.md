@@ -4,6 +4,14 @@
 
 * A code exercise in an effort to kick the tires on functional PHP.
 * This is not a complete implementation of War-O as described [here](https://github.com/peidevs/WarO_Java/blob/master/Rules.md), but it is close. 
+* Rather than merely port other OO examples, this example is experimental:
+    * `main` is a State monad
+    * classes are mostly simple fields 
+    * immutable state 
+* TODO:
+    * implement strategies
+    * shuffle a deck, deal to players / kitty
+    * consider an IO monad for logging
 
 ### Info
 
@@ -42,9 +50,4 @@ docker pull phpunit/phpunit
 ### To run tests
 
 * `./run_tests.sh`
-
-### TODO 
-
-* implement strategies
-* shuffle a deck and deal to players / kitty
 
