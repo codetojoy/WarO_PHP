@@ -34,17 +34,16 @@ function playRound($prizeCard, $dummy = []) {
 // something going on my understanding of the currying mechanism,
 // so I'm having trouble removing it. Ugh.
 
-function logState($gameState) {
+function logState($prizeCard, $gameState) {
     // TODO: this should really be using an IO monad
     $gameState->logState();
-    $unused = -1;
 
-    return [$unused, $gameState];
+    return [$prizeCard, $gameState];
 }
 
 function buildLog($prizeCard, $dummy) {
-    return s\state(function($gameState) { 
-        return logState($gameState);
+    return s\state(function($gameState) use ($prizeCard) { 
+        return logState($prizeCard, $gameState);
     }); 
 } 
 

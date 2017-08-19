@@ -52,4 +52,22 @@ class GameFunctionsTest extends TestCase {
         $this->assertEquals('Bach', $bids[1]->getPlayer()->getName());
         $this->assertEquals('Chopin', $bids[2]->getPlayer()->getName());
     }
+
+    public function testPlayRoundForPlayers_Basic() {
+        $p1 = new Player('Mozart', new Hand([10,20,30]));
+        $p2 = new Player('Bach', new Hand([11,21,31]));
+        $p3 = new Player('Chopin', new Hand([12,22,32]));
+
+        $players = array();
+        $players[$p1->getName()] = $p1;
+        $players[$p2->getName()] = $p2;
+        $players[$p3->getName()] = $p3;
+
+        // test
+        $newPlayers = playRoundForPlayers(5150, $players);
+
+        $this->assertEquals(0, $newPlayers['Mozart']->getTotal());
+        $this->assertEquals(0, $newPlayers['Bach']->getTotal());
+        $this->assertEquals(5150, $newPlayers['Chopin']->getTotal());
+    }
 }

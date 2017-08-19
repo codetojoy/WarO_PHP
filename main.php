@@ -17,17 +17,20 @@ use Widmogrod\Monad\State as s;
 $p1 = new Player('Mozart',new Hand(array(1,4,5,8)));
 $p2 = new Player('Chopin',new Hand(array(2,3,6,7)));
 
+// Mozart = 53, Chopin = 86
+$kitty = [10,21,43,65];
+
 $config = array();
 $config[$p1->getName()] = $p1;
 $config[$p2->getName()] = $p2;
-
-$kitty = [10,20,30,40];
 
 //------------- main 
 
 // build the State monad as a chain of functions
 
-$seedCard = array_pop($kitty);
+// ********* NEW
+
+$seedCard = array_shift($kitty);
 $state = playRound($seedCard, [])->bind(logGameState($seedCard));
 
 foreach($kitty as $prizeCard) {
