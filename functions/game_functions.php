@@ -40,4 +40,10 @@ function playRoundForPlayers($prizeCard, $players) {
     return $newPlayers;
 }
 
+function playRoundGameState($prizeCard, $gameState) {
+    $newPlayers = playRoundForPlayers($prizeCard, $gameState->getPlayers());
+
+    return new GameState($newPlayers);
+}
+
 ?>

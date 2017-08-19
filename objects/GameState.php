@@ -1,8 +1,6 @@
 
 <?php 
 
-require_once './functions/game_functions.php';
-
 class GameState {
     private $players;
 
@@ -10,18 +8,14 @@ class GameState {
         $this->players = $players;
     }
 
+    public function getPlayers() { return $this->players; }
+
     public function logState() {
         echo "-------\n";
         foreach($this->players as $p) {
             $p->logState();
         };
         echo "\n\n";
-    }
-
-    public function playRound($prizeCard) {
-        $newPlayers = playRoundForPlayers($prizeCard, $this->players);
-        
-        return new GameState($newPlayers);
     }
 }
 

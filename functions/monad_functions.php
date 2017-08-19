@@ -3,6 +3,8 @@
 
 require 'vendor/autoload.php';
 
+require_once './functions/game_functions.php';
+
 use Widmogrod\Functional as f;
 use Widmogrod\Monad\State as s;
 
@@ -13,7 +15,7 @@ use Widmogrod\Monad\State as s;
 // so I'm having trouble removing it. Ugh.
 
 function updateState($prizeCard, $gameState) {
-    $newGameState = $gameState->playRound($prizeCard);
+    $newGameState = playRoundGameState($prizeCard, $gameState);
 
     return [$prizeCard, $newGameState];
 }
