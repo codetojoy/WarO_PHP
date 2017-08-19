@@ -21,23 +21,17 @@ class Player {
         echo "name: ".$this->name." roundsWon: ".$this->roundsWon." total: ".$this->total."\n";
     }
 
-    public function clonePlayer() {
-        $newPlayer = new Player($this->name, $this->hand, $this->roundsWon, $this->total);
-        return $newPlayer;
-    }
-
     public function getBid() { 
         list($card, $newHand) = $this->hand->selectCard();
-        $newPlayer = $this->clonePlayer();
-        $newPlayer->hand = $newHand;
+        $newPlayer = new Player($this->name, $newHand, $this->roundsWon, $this->total);
         return [$card, $newPlayer];
     }
     
     public function winsRound($prizeCard) {
-        $newPlayer = $this->clonePlayer();
-        $newPlayer->roundsWon = $this->roundsWon + 1;
-        $newPlayer->total = $this->total + $prizeCard;
-        return $newPlayer;
+        return new Player($this->name, 
+                          $this->hand, 
+                          $this->roundsWon + 1, 
+                          $this->total + $prizeCard);
     }
 }
 

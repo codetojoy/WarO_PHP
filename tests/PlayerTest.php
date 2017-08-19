@@ -8,16 +8,6 @@ require './objects/Player.php';
 use PHPUnit\Framework\TestCase;
 
 class PlayerTest extends TestCase {
-    public function testClonePlayer_Basic() {
-        $player = new Player('Mozart', [10,20,30], 1, 5150);
-
-        // test
-        $newPlayer = $player->clonePlayer();
-
-        $this->assertFalse($newPlayer === $player);
-        $this->assertTrue($newPlayer == $player);
-    }
-
     public function testGetBid_Basic() {
         $hand = new Hand([10,20,30]);
         $player = new Player('Mozart', $hand);
