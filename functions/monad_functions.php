@@ -53,4 +53,21 @@ function logGameState($prizeCard, $dummy = []) {
     return f\curryN(2, 'buildLog')(...func_get_args()); 
 } 
 
+// ------- seed
+
+// TODO: we don't need `dummy` but there is
+// something going on my understanding of the currying mechanism,
+// so I'm having trouble removing it. Ugh.
+
+function seedGameState($prizeCard, $dummy = []) { 
+    return s\state(function($gameState) use ($prizeCard) {
+        // identity, no-op
+        return [$prizeCard, $gameState];
+    }); 
+} 
+
+function seedState($prizeCard, $dummy = []) { 
+    return f\curryN(2, 'seedGameState')(...func_get_args()); 
+} 
+
 ?>
