@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-require 'Hand.php';
+require './objects/Hand.php';
 
 use PHPUnit\Framework\TestCase;
 

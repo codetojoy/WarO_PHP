@@ -3,12 +3,12 @@
 
 require 'vendor/autoload.php';
 
-require 'Bid.php';
-require 'Hand.php';
-require 'Player.php';
-require 'GameState.php';
+require_once './objects/Bid.php';
+require_once './objects/Hand.php';
+require_once './objects/Player.php';
+require_once './objects/GameState.php';
 
-require 'monad_functions.php';
+require_once 'monad_functions.php';
 
 use Widmogrod\Monad\State as s;
 

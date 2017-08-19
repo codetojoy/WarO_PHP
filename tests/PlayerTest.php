@@ -2,8 +2,8 @@
 
 require 'vendor/autoload.php';
 
-require 'Hand.php';
-require 'Player.php';
+require './objects/Hand.php';
+require './objects/Player.php';
 
 use PHPUnit\Framework\TestCase;
 

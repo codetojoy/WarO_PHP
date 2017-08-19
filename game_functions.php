@@ -1,6 +1,9 @@
 
 <?php 
 
+require_once './objects/Bid.php';
+require_once './objects/GameState.php';
+
 function findWinningBid($bids) {
     return array_reduce($bids, function ($cursor, $item) {
         $leader = $cursor;

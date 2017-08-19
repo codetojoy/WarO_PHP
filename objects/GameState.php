@@ -1,7 +1,7 @@
 
 <?php 
 
-require 'game_functions.php';
+require_once 'game_functions.php';
 
 class GameState {
     private $players;

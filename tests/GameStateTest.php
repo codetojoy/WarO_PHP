@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-require 'GameState.php';
+require './objects/GameState.php';
 
 use PHPUnit\Framework\TestCase;
 
