@@ -25,21 +25,17 @@ $kitty = [10,20,30,40];
 
 //------------- main 
 
-/*
-e.g. playRound(10, [])
-        ->bind(playRound(20))
-        ->bind(playRound(30))
-        ->bind(playRound(40))
-*/
+// build the State monad as a chain of functions
 
 $state = playRound(array_pop($kitty), []);
 
 foreach($kitty as $prizeCard) {
     $state = $state->bind(playRound($prizeCard));
+    $state = $state->bind(logGameState($prizeCard));
 }
 
-list($x, $finalGameState) = s\runState($state, new GameState($config)); 
+// release the hounds!
 
-$finalGameState->logState();
+s\runState($state, new GameState($config)); 
 
 ?>
