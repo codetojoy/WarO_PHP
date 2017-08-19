@@ -32,13 +32,13 @@ e.g. playRound(10, [])
         ->bind(playRound(40))
 */
 
-$chain = playRound(array_pop($kitty), []);
+$state = playRound(array_pop($kitty), []);
 
 foreach($kitty as $prizeCard) {
-    $chain = $chain->bind(playRound($prizeCard));
+    $state = $state->bind(playRound($prizeCard));
 }
 
-list($x, $finalGameState) = s\runState($chain, new GameState($config)); 
+list($x, $finalGameState) = s\runState($state, new GameState($config)); 
 
 $finalGameState->logState();
 
