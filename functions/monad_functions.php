@@ -8,6 +8,10 @@ use Widmogrod\Monad\State as s;
 
 // ------- playRound
 
+// TODO: we don't need `dummy` but there is
+// something going on my understanding of the currying mechanism,
+// so I'm having trouble removing it. Ugh.
+
 function updateState($prizeCard, $gameState, $dummy) {
     $newGameState = $gameState->playRound($prizeCard);
 
@@ -26,23 +30,24 @@ function playRound($prizeCard, $dummy = []) {
 
 // ------- logGameState
 
+// TODO: we don't need `prizeCard` or `dummy` but there is
+// something going on my understanding of the currying mechanism,
+// so I'm having trouble removing it. Ugh.
+
 function logState($prizeCard, $gameState, $dummy) {
-    echo "TRACER logState\n";
+    // TODO: this should really be using an IO monad
     $gameState->logState();
 
     return [$prizeCard, $gameState];
 }
 
 function buildLog($prizeCard, $dummy = []) { 
-    echo "TRACER buildLog outer \n";
     return s\state(function($gameState) use ($prizeCard, $dummy) {
-        echo "TRACER buildLog inner \n";
         return logState($prizeCard, $gameState, $dummy);
     }); 
 } 
 
-function logGameState($prizeCard, $dummy = []) { 
-    echo "TRACER logGameState\n";
+function logGameState($prizeCard = -1, $dummy = []) { 
     return f\curryN(2, 'buildLog')(...func_get_args()); 
 } 
 

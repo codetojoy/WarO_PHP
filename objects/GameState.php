@@ -11,9 +11,11 @@ class GameState {
     }
 
     public function logState() {
+        echo "-------\n";
         foreach($this->players as $p) {
             $p->logState();
         };
+        echo "\n\n";
     }
 
     public function playRound($prizeCard) {
